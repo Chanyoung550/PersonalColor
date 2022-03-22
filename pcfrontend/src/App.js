@@ -1,40 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import { Route } from 'react-router-dom';
 import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import InputPage from './pages/InputPage';
+import StartPage from './pages/StartPage';
 
 function App() {
-  // 요청받은 정보를 담아줄 변수 선언
-  const [ testStr, setTestStr ] = useState('');
-
-  function insertData(){
-
-  }
-
-  // 변수 초기화
-  function callback(str) {
-    setTestStr(str);
-  }
-
-  // 첫 번째 렌더링을 마친 후 실행
-  useEffect(
-      () => {
-        axios({
-            url: '/api/hello',
-            method: 'GET'
-        }).then((res) => {
-            callback(res.data);
-        })
-      }, []
-  );
-
   return (
-      <div className="App">
-          <header className="App-header">
-              {testStr}
-          </header>
-          <input type = "text" name = "id"/>
-          <input type = "text" name = "pw"/>
-      </div>
+    <div className="container">
+      <Header />
+      <Route path="/" exact={true} component={StartPage}/>
+      <Route path="/input" exact={true} component={InputPage}/>
+      <Footer />
+    </div>
   );
 }
 

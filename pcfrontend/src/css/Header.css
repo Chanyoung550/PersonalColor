@@ -1,0 +1,13 @@
+.HeadColor {
+  background-color: #444444;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}
+.HeadFontColor {
+  color: white;
+  margin: 0;
+  font-size: 50px;
+  text-align: center;
+}

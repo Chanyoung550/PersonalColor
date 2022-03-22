@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
 	@RequestMapping("/api/hello")
-	public String test() {
-		return "test";
+	public Object test() {
+		return "{test : test}";
 	}
 	@RequestMapping("/react")
 	public String test2() {

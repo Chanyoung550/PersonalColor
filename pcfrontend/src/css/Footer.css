@@ -1,0 +1,35 @@
+.FooterColor {
+  background-color: #444444;
+}
+
+.DivFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.FlexItem {
+  flex: 1;
+  padding: 7px 15px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgray;
+  align-items: center;
+}
+
+.FooterFontColor {
+  color: aliceblue;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .DivFlex {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}
