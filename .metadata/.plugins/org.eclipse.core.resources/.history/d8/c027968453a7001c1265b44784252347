@@ -1,0 +1,14 @@
+package com.personalColor.pc.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.personalColor.pc.Repository.UserInfoRepository;
+
+@Service
+public class UserService {
+
+	@Autowired
+	UserInfoRepository userrepository;
+	
+}

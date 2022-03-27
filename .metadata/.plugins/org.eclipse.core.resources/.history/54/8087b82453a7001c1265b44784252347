@@ -1,0 +1,9 @@
+package com.personalColor.pc.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.personalColor.pc.Board.UserInfo;
+
+public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
+
+}
