@@ -24,10 +24,45 @@ public class User {
 		private long userNum;
         
 		@Column(length = 30)
-		private String userId;
+		private String name;
   
+		public long getUserNum() {
+			return userNum;
+		}
+
+		public void setUserNum(long userNum) {
+			this.userNum = userNum;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public int getAge() {
+			return age;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+
+		public String getGender() {
+			return gender;
+		}
+
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+
 		@Column(length = 30)
-		private String userPw;
+		private int age;
+		
+		@Column(length = 30)
+		private String gender;
 	      
 //	      @ColumnDefault("'user'")
 //	      private String role;
