@@ -1,0 +1,18 @@
+package com.personalColor.pc.Utils;
+
+public class FileUpload {
+
+	public String uploadUserImage() {
+		
+		long time = System.currentTimeMillis();
+		
+		try {
+			//file.transferTo(newFileName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+}

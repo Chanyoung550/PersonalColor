@@ -31,6 +31,8 @@ public class UserController {
 	public String fileUpload(User userInfo,
 			@RequestParam("img") MultipartFile file) {
 		
-		return "success";
+		String res = userService.uploadUserImage(userInfo, file);
+		
+		return res;
 	}
 }

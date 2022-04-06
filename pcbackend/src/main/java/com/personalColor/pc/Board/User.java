@@ -25,7 +25,24 @@ public class User {
         
 		@Column(length = 30)
 		private String name;
+
+		@Column(length = 30)
+		private int age;
+		
+		@Column(length = 30)
+		private String gender;
+		
+		@Column(length = 100)
+		private String imgPath;
   
+		public String getImgPath() {
+			return imgPath;
+		}
+
+		public void setImgPath(String imgPath) {
+			this.imgPath = imgPath;
+		}
+
 		public long getUserNum() {
 			return userNum;
 		}
@@ -57,12 +74,6 @@ public class User {
 		public void setGender(String gender) {
 			this.gender = gender;
 		}
-
-		@Column(length = 30)
-		private int age;
-		
-		@Column(length = 30)
-		private String gender;
 	      
 //	      @ColumnDefault("'user'")
 //	      private String role;

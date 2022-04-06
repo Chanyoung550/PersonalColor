@@ -1,0 +1,20 @@
+package com.personalColor.pc.Utils;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class FileUpload {
+
+	public String uploadUserImage(MultipartFile file) {
+		
+		long time = System.currentTimeMillis();
+		
+		try {
+			//file.transferTo(newFileName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+}

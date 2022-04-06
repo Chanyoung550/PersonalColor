@@ -7,11 +7,7 @@ import axios from 'axios'
     const [post, setPost] = useState({name:"", age: ""});
     const [gender, setGender] = useState('');
     const [files, setFiles] = useState({});
-
-    console.log("이름 : "+post.name);
-    console.log("나이 : "+post.age);
-    console.log("성별 : "+gender);
-    console.log("파일 : "+files);
+    const [imgFile, setImgFile] = useState(null);
 
     const handleForm = (e) => {
         setPost({
@@ -31,8 +27,8 @@ import axios from 'axios'
         else if(gender === ''){
             alert("성별을 선택해주세요.")
         }
-        else if (files.imgFile === {}){
-            alert("파일을 등록해주세요.")
+        else if (imgFile === null){
+            alert("사진을 등록해주세요.")
         }
         else{
             const fd = new FormData();
@@ -49,7 +45,12 @@ import axios from 'axios'
                 headers: {'content-type': 'multipart/form-data'}
             })
             .then((res)=> {
-                console.log(res);
+                if(res.data === "success"){
+                    document.getElementById("resultBtn").click();
+                }
+                else{
+                    alert("분석을 실패했습니다.");
+                }
             });
         }
     }
@@ -61,12 +62,6 @@ import axios from 'axios'
     
     }
 
-    const webCamBtn = () => {
-        
-        const imgButton = document.getElementById("webCamPic");
-        imgButton.click();
-    
-    }
 
     const radioChk = (event) => {
         setGender(event.target.value);
@@ -74,57 +69,11 @@ import axios from 'axios'
     
     const imgChange = (event) =>{
         const file = event.target.files[0];
+        const imageUrl = URL.createObjectURL(file);
+        setImgFile(imageUrl);
         setFiles({imgFile: file});
         console.log(files);
-        document.getElementById('pic').disabled = true;
     }
-
-    const [playing, setPlaying] = React.useState(undefined);
-
-  const videoRef = React.useRef(null);
-
-  const getWebcam = (callback) => {
-    try {
-      const constraints = {
-        'video': true,
-        'audio': false
-      }
-      navigator.mediaDevices.getUserMedia(constraints)
-        .then(callback);
-    } catch (err) {
-      console.log(err);
-      return undefined;
-    }
-  }
-  
-  const Styles = {
-    Video: { width: "100%", height: "100%", background: 'rgba(245, 240, 215, 0.5)' },
-    None: { display: 'none' },
-  }
-
-  React.useEffect(() => {
-    getWebcam((stream => {
-      setPlaying(true);
-      videoRef.current.srcObject = stream;
-    }));
-  }, []);
-
-  const startOrStop = () => {
-    if (playing) {
-      const s = videoRef.current.srcObject;
-      s.getTracks().forEach((track) => {
-        track.stop();
-      });
-    } else {
-      getWebcam((stream => {
-        setPlaying(true);
-        videoRef.current.srcObject = stream;
-      }));
-    }
-    setPlaying(!playing);
-  }
-
-
 
     return (
         <div>
@@ -139,23 +88,15 @@ import axios from 'axios'
                 <input id="female" value="여자" type="radio" name='gender'/>여자
             </div>
             <div>
-                {/*<div>*둘중 하나만 등록</div>
-                <div>
-                    <button onClick={webCamBtn} id = "pic">사진촬영</button>
-                    <input type="file" style={{display: "none"}} id="webCamPic" accept="image/*" />
-                </div>
-                <div style={{ width: '100vw', height: '100vh', padding: '3em' }}>
-                    <video ref={videoRef} autoPlay style={Styles.Video}/>
-                    <button color="warning" onClick={() => startOrStop()}>{playing ? 'Stop' : 'Start'} </button>
-                </div >*/}
                 <div >
                     <button onClick={imgUploadBtn} id = "pho">사진등록</button>
                     <input type="file" style = {{display:"none"}} id = "imgFile" accept='image/*' onChange={(event)=>{imgChange(event)}}/>
+                    {imgFile && <img src = {imgFile} alt=''/>}
                 </div>
             </div>
             <div>
-                <Link to = "/chkPhoto">
-                    <button onClick={(event) => {imgupload(event)}} >등록하기</button>
+                <Link to = "/result" id = "resultBtn">
+                    <button onClick={(event) => {imgupload(event)}} >퍼스널컬러확인하기</button>
                 </Link>
             </div>
         </div>
