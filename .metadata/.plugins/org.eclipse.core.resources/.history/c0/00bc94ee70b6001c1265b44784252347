@@ -1,0 +1,13 @@
+package com.personalColor.pc.Utils;
+
+
+public class Command {
+
+	public String startPython() {
+		
+		
+		
+		return null;
+	}
+	
+}

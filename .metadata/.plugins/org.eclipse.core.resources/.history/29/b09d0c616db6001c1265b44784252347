@@ -1,0 +1,8 @@
+package com.personalColor.pc.DTO;
+
+public interface FilePathDTO {
+	
+	String getDirPath();
+	String getImgPath();
+
+}

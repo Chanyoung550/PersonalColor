@@ -34,7 +34,19 @@ public class User {
 		
 		@Column(length = 100)
 		private String imgPath;
+		
+		@Column(length = 100)
+		private String dirPath;
   
+		
+		public String getDirPath() {
+			return dirPath;
+		}
+
+		public void setDirPath(String dirPath) {
+			this.dirPath = dirPath;
+		}
+
 		public String getImgPath() {
 			return imgPath;
 		}

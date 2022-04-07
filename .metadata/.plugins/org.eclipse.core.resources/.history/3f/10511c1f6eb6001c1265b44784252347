@@ -1,0 +1,32 @@
+package com.personalColor.pc.Utils;
+
+import java.io.File;
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
+
+
+public class FileUpload {
+
+	
+	public String[] uploadUserImage(MultipartFile file) {
+		
+		long time = System.currentTimeMillis();
+		
+		try {
+			String uid = UUID.randomUUID().toString();
+			File imgFile = new File(uid+"/"+time+"_"+file.getOriginalFilename());
+			imgFile.mkdirs();
+			file.transferTo(imgFile);
+			String[] resArr = new String[2];
+			resArr[0] = uid;
+			resArr[1] = time+"_"+file.getOriginalFilename();
+			
+			return resArr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			//return "failed";
+		}
+	}
+	
+}

@@ -1,26 +1,40 @@
 package com.personalColor.pc.Utils;
 
 import java.io.File;
+import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
+
 
 public class FileUpload {
 
 	
-	public String uploadUserImage(MultipartFile file) {
+	public String[] uploadUserImage(MultipartFile file) {
 		
 		long time = System.currentTimeMillis();
 		
 		try {
-			File imgFile = new File(time+"_"+file.getOriginalFilename());
+			String uid = UUID.randomUUID().toString();
+			File imgFile = new File("/Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/"+uid+"/"+time+"_"+file.getOriginalFilename());
+			imgFile.mkdirs();
 			file.transferTo(imgFile);
+			String[] resArr = new String[2];
+			resArr[0] = uid;
+			resArr[1] = time+"_"+file.getOriginalFilename();
+			
+			System.out.println(resArr[0]);
+			System.out.println(resArr[1]);
+			
+			Command startPython = new Command();
+			startPython.startPython(resArr);
+			
+			return resArr;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "failed";
+			String[] resArr = new String[1];
+			resArr[0] = "failed";
+			return resArr;
 		}
-		
-		return time+"_"+file.getOriginalFilename();
 	}
 	
 }

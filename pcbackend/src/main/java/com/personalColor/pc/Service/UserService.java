@@ -23,10 +23,11 @@ public class UserService {
 	public String uploadUserImage(User userInfo, MultipartFile file) {
 		
 		FileUpload fu = new FileUpload();
-		String imgPath = fu.uploadUserImage(file);
+		String[] imgPath = fu.uploadUserImage(file);
 		
-		if(!imgPath.equals("failed")) {
-			userInfo.setImgPath(imgPath);
+		if(!imgPath[0].equals("failed")) {
+			userInfo.setDirPath(imgPath[0]);
+			userInfo.setImgPath(imgPath[1]);
 			userRepository.save(userInfo);
 			return "success";
 		}
