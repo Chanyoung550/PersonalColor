@@ -4,13 +4,19 @@ import argparse
 import os
 
 
-def main():
+def main():# 
+
+    f = open("/Users/chan/Downloads/test.txt", 'at')
+    f.write('1')
+    f.close()
+
     # 인자값 받을 인스턴스 생성
     parser = argparse.ArgumentParser(description = 'Please input your image.')
 
     # 입력받을 인자값 등록
     parser.add_argument('--image', required = False, help='input .jpg or .png file')
     parser.add_argument('--dir', required = False, help='input image directory')
+    parser.add_argument('--imgDirPath', required = False)
 
     # 입력받은 인자값을 args에 저장
     args = parser.parse_args()
@@ -20,7 +26,8 @@ def main():
     ##################################
     if args.image != None:
         imgpath = args.image
-        personal_color.analysis(imgpath)
+        imgDirPath = args.imgDirPath
+        personal_color.analysis(imgpath, imgDirPath)
 
     ##################################
     #  multiple images in directory  #

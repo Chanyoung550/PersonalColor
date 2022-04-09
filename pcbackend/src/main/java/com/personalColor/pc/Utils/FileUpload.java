@@ -22,8 +22,6 @@ public class FileUpload {
 			resArr[0] = uid;
 			resArr[1] = time+"_"+file.getOriginalFilename();
 			
-			System.out.println(resArr[0]);
-			System.out.println(resArr[1]);
 			
 			Command startPython = new Command();
 			startPython.startPython(resArr);

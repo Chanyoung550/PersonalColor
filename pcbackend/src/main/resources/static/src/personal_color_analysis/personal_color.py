@@ -7,10 +7,11 @@ from personal_color_analysis.color_extract import DominantColors
 from colormath.color_objects import LabColor, sRGBColor, HSVColor
 from colormath.color_conversions import convert_color
 
-def analysis(imgpath):
+def analysis(imgpath, imgDirPath):
     #######################################
     #           Face detection            #
     #######################################
+    print(imgDirPath)
     df = DetectFace(imgpath)
     face = [df.left_cheek, df.right_cheek,
             df.left_eyebrow, df.right_eyebrow,

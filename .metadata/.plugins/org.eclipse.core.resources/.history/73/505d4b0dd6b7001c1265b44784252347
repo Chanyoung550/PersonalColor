@@ -1,0 +1,39 @@
+package com.personalColor.pc.Utils;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Command {
+
+	public String startPython(String[] path) {
+		
+		try{
+			System.out.println(path[0]);
+			System.out.println(path[1]);
+			String[] test = {
+					"/bin/sh",
+					"-c",
+					"python", 
+					"/Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/main.py",
+					"--image /Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/"+path[0]+"/"+path[1]
+			};///bin/sh && source /Users/chan/opt/anaconda3/etc/profile.d/conda.sh && 
+			String cmd = "/bin/zsh && conda activate pcolor && python /Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/main.py --image /Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/"+path[0]+"/"+path[1]+ "--imgDirPath "+ path[0];
+			String test2 = "/bin/bash -c pwd";
+		    Process p = Runtime.getRuntime().exec("conda activate pcolor && python /Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/main.py --image /Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/"+path[0]+"/"+path[1]+ "--imgDirPath "+ path[0]);///a8d48779-2815-49b9-9c7b-6e55da1649399614603_이력서사진.jpeg진.jpegeg진.jpeg
+		    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		    String line = null;
+
+		    while((line = br.readLine()) != null){
+		        System.out.println(line);
+		    }
+		    p.waitFor();
+		    p.destroy();
+		    return "seccess";
+
+		}catch(Exception e){
+		    //System.out.println(e);
+		    return "failed";
+		}
+	}
+	//15ef97ea-9d76-496a-89fa-d379b6761511/1649484307840_이력서사진.jpeg
+}

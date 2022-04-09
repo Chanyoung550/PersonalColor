@@ -6,13 +6,12 @@ import numpy as np
 import dlib
 import cv2
 import matplotlib.pyplot as plt
-
 class DetectFace:
     def __init__(self, image):
         # initialize dlib's face detector (HOG-based)
         # and then create the facial landmark predictor
         self.detector = dlib.get_frontal_face_detector()
-        self.predictor = dlib.shape_predictor('../res/shape_predictor_68_face_landmarks.dat')
+        self.predictor = dlib.shape_predictor('/Users/chan/PersonalColor/pcbackend/src/main/resources/static/res/shape_predictor_68_face_landmarks.dat')
 
         #face detection part
         self.img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
