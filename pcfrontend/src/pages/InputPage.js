@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../components/Input';
 
+
 const InputPage = () => {
-    return <Input />;
+
+    
+
+    return <Input/>;
 };
 
 export default InputPage;

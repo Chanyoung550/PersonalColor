@@ -34,11 +34,22 @@ public class User {
 		
 		@Column(length = 100)
 		private String imgPath;
-		
+
 		@Column(length = 100)
 		private String dirPath;
+
+		@Column(length = 100)
+		private String res;
   
 		
+		
+		public String getRes() {
+			return res;
+		}
+
+		public void setRes(String res) {
+			this.res = res;
+		}
 		public String getDirPath() {
 			return dirPath;
 		}

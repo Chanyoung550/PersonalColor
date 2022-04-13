@@ -18,13 +18,24 @@ public class FileUpload {
 			File imgFile = new File("/Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/"+uid+"/"+time+"_"+file.getOriginalFilename());
 			imgFile.mkdirs();
 			file.transferTo(imgFile);
-			String[] resArr = new String[2];
+			String[] resArr = new String[3];
 			resArr[0] = uid;
 			resArr[1] = time+"_"+file.getOriginalFilename();
 			
 			
 			Command startPython = new Command();
-			startPython.startPython(resArr);
+			String res = startPython.startPython(resArr);
+			
+			System.out.println("file upload"+res);
+			
+			if(!res.equals("failed")) {
+				resArr[2] = res;
+			}
+			else {
+				String[] resArr2 = new String[1];
+				resArr[0] = "failed";
+				return resArr2;
+			}
 			
 			return resArr;
 		} catch (Exception e) {

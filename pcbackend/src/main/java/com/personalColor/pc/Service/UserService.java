@@ -20,7 +20,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
-	public String uploadUserImage(User userInfo, MultipartFile file) {
+	public Long uploadUserImage(User userInfo, MultipartFile file) {
 		
 		FileUpload fu = new FileUpload();
 		String[] imgPath = fu.uploadUserImage(file);
@@ -28,12 +28,18 @@ public class UserService {
 		if(!imgPath[0].equals("failed")) {
 			userInfo.setDirPath(imgPath[0]);
 			userInfo.setImgPath(imgPath[1]);
+			userInfo.setRes(imgPath[2]);
 			userRepository.save(userInfo);
-			return "success";
+			User result = userRepository.findByImgPathAndDirPath(userInfo.getImgPath(), userInfo.getDirPath());
+			long pk = result.getUserNum();
+			return pk;
 		}
 		else {
-			return "failed";
+			return -1l;
 		}
+	}
+	public User result(long num) {
+		return userRepository.findByUserNum(num);
 	}
 	
 }

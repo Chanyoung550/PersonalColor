@@ -4,76 +4,79 @@ import axios from 'axios'
 
     const Input = () => {
 
-    const [post, setPost] = useState({name:"", age: ""});
-    const [gender, setGender] = useState('');
-    const [files, setFiles] = useState({});
-    const [imgFile, setImgFile] = useState(null);
 
-    const handleForm = (e) => {
-        setPost({
-            ...post,
-            [e.target.name]:e.target.value
-        });
-    }
+        const [post, setPost] = useState({name:"", age: ""});
+        const [gender, setGender] = useState('');
+        const [files, setFiles] = useState({});
+        const [imgFile, setImgFile] = useState(null);
+        const [num, setNum] = useState(0);
 
-    const imgupload = (event) =>{
-        event.preventDefault();
-        if(post.name === ''){
-            alert("이름을 입력해주세요.");
-        }
-        else if(post.age === ''){
-            alert("나이를 입력해주세요.")
-        }
-        else if(gender === ''){
-            alert("성별을 선택해주세요.")
-        }
-        else if (imgFile === null){
-            alert("사진을 등록해주세요.")
-        }
-        else{
-            const fd = new FormData();
-            fd.append('img', files.imgFile);
-            fd.append('name', post.name);
-            fd.append('age', post.age);
-            fd.append('gender', gender);
-            console.log(fd);
-
-            axios({
-                method: "post",
-                url: "/fileUpload.do",
-                data: fd,
-                headers: {'content-type': 'multipart/form-data'}
-            })
-            .then((res)=> {
-                if(res.data === "success"){
-                    document.getElementById("resultBtn").click();
-                }
-                else{
-                    alert("분석을 실패했습니다.");
-                }
+        const handleForm = (e) => {
+            setPost({
+                ...post,
+                [e.target.name]:e.target.value
             });
         }
-    }
-    
-    const imgUploadBtn = () => {
+
+        const imgupload = (event) =>{
+            event.preventDefault();
+            if(post.name === ''){
+                alert("이름을 입력해주세요.");
+            }
+            else if(post.age === ''){
+                alert("나이를 입력해주세요.")
+            }
+            else if(gender === ''){
+                alert("성별을 선택해주세요.")
+            }
+            else if (imgFile === null){
+                alert("사진을 등록해주세요.")
+            }
+            else{
+                const fd = new FormData();
+                fd.append('img', files.imgFile);
+                fd.append('name', post.name);
+                fd.append('age', post.age);
+                fd.append('gender', gender);
+                console.log(fd);
+
+                axios({
+                    method: "post",
+                    url: "/fileUpload.do",
+                    data: fd,
+                    headers: {'content-type': 'multipart/form-data'}
+                })
+                .then((res)=> {
+                    if(res.data !== -1){
+                        setNum(num+res.data);
+                        document.getElementById("resultBtn").click();
+                    }
+                    else{
+                        alert("분석을 실패했습니다.");
+                    }
+                });
+            }
+        }
         
-        const imgButton = document.getElementById("imgFile");
-        imgButton.click();
-    
-    }
+        const imgUploadBtn = () => {
+            
+            const imgButton = document.getElementById("imgFile");
+            imgButton.click();
+        
+        }
 
 
-    const radioChk = (event) => {
-        setGender(event.target.value);
-    }
-    
-    const imgChange = (event) =>{
-        const file = event.target.files[0];
-        const imageUrl = URL.createObjectURL(file);
-        setImgFile(imageUrl);
-        setFiles({imgFile: file});
-        console.log(files);
-    }
+        const radioChk = (event) => {
+            setGender(event.target.value);
+        }
+        
+        const imgChange = (event) =>{
+            const file = event.target.files[0];
+            const imageUrl = URL.createObjectURL(file);
+            setImgFile(imageUrl);
+            setFiles({imgFile: file});
+            console.log(files);
+        }
 
     return (
         <div>
@@ -95,7 +98,12 @@ import axios from 'axios'
                 </div>
             </div>
             <div>
-                <Link to = "/result" id = "resultBtn">
+                <Link to = {{
+                    pathname: '/result',
+                    state: {
+                        data1: num
+                    },
+                }} id = "resultBtn">
                     <button onClick={(event) => {imgupload(event)}} >퍼스널컬러확인하기</button>
                 </Link>
             </div>

@@ -45,9 +45,6 @@ class DetectFace:
         # loop over the face parts individually
         for (name, (i, j)) in face_utils.FACIAL_LANDMARKS_IDXS.items():
             face_parts[idx] = shape[i:j]
-            print(str(idx+1)+"번째 값 =========> " + str(i)+"          " + str(j))
-            print("리스트 길이 =========> "+str(len(face_parts)))
-            print(face_parts[idx])
             idx += 1
         face_parts = face_parts[1:5]
         # set the variables

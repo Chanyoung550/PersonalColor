@@ -1,5 +1,0 @@
-package com.personalColor.pc.Repository;
-
-public interface UserInfoRepository {
-
-}

@@ -1,6 +1,9 @@
 package com.personalColor.pc.Controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,10 +31,27 @@ public class UserController {
 //	}
 	
 	@RequestMapping(value = "fileUpload.do" )
-	public String fileUpload(User userInfo,
+	public long fileUpload(User userInfo,
 			@RequestParam("img") MultipartFile file) {
 		
-		String res = userService.uploadUserImage(userInfo, file);
+		long res = userService.uploadUserImage(userInfo, file);
+		
+		return res;
+	}
+	@RequestMapping(value = "result.do")//User user, 
+	public User result(@RequestBody Map<String, Object> num) {
+		String pkStr = num.get("userNum").toString();
+		long pk = Long.parseLong(pkStr);
+		User res = userService.result(pk);
+		
+		System.out.println(res.getAge());
+		System.out.println(res.getDirPath());
+		System.out.println(res.getGender());
+		System.out.println(res.getImgPath());
+		System.out.println(res.getName());
+		System.out.println(res.getRes());
+		System.out.println(res.getUserNum());
+		
 		
 		return res;
 	}

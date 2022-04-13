@@ -1,0 +1,67 @@
+package com.personalColor.pc.Utils;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Command {
+
+	public String startPython(String[] path) {
+		
+		try{
+//			// 파일의 경로 + 파일명
+//	        String filePath = "/Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/res.txt";
+//	        
+//	        File deleteFile = new File(filePath);
+//	 
+//	        // 파일이 존재하는지 체크 존재할경우 true, 존재하지않을경우 false
+//	        if(deleteFile.exists()) {
+//	            
+//	            // 파일을 삭제합니다.
+//	            deleteFile.delete(); 
+//	            
+//	            System.out.println("파일을 삭제하였습니다.");
+//	            
+//	        } else {
+//	            System.out.println("파일이 존재하지 않습니다.");
+//	        }
+			//python /Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/main.py --image /Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/5ab9d28b-ac4e-4da3-babe-f4fc63b7956b/1649833256670_이력서사진.jpeg --imgDirPath 5ab9d28b-ac4e-4da3-babe-f4fc63b7956b
+//			System.out.println(path[0]);
+//			System.out.println(path[1]);		
+//			String[] cmd = new String[] {"/bin/sh", "-c", "/Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/start.sh"};
+//			ProcessBuilder processBuilder = new ProcessBuilder(cmd);
+//			Process p = processBuilder.start();
+			
+			String  cmd = "/Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/start.sh";
+			
+//			ProcessBuilder process = new ProcessBuilder(cmdList);
+//			
+//			Process p = process.start();
+			Process p = Runtime.getRuntime().exec(cmd);
+		    p.waitFor();
+		    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		    String line = null;
+
+		    while((line = br.readLine()) != null){
+		        System.out.println(line);
+		    }
+		    p.destroy();
+		    
+		    BufferedReader readtest = new BufferedReader(new FileReader("/Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/res.txt"));
+    		String str;
+    		while ((str = readtest.readLine()) != null) {
+    			System.out.println("test ==============> " + str);
+    		}
+    		readtest.close();
+
+		    return "seccess";
+
+		}catch(Exception e){
+		    System.out.println(e);
+		    return "failed";
+		}
+	}
+}

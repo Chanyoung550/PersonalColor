@@ -1,0 +1,33 @@
+package com.personalColor.pc.Utils;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Command {
+
+	public String startPython(String[] path) {
+		
+		try{
+			System.out.println(path[0]);
+			System.out.println(path[1]);///bin/sh && source /Users/chan/opt/anaconda3/etc/profile.d/conda.sh && 
+//			ProcessBuilder processBuilder = new ProcessBuilder();
+//			processBuilder.command("/bin/bash -c pwd && source activate pcolor && python /Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/main.py --image /Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/c6bb5cbe-e6cb-403d-8a29-0fa04005d407/1649491285245_이력서사진.jpeg --imgDirPath c6bb5cbe-e6cb-403d-8a29-0fa04005d407005d407");
+			
+			Process p = Runtime.getRuntime().exec("/bin/bash -c pwd && source activate pcolor && python /Users/chan/PersonalColor/pcbackend/src/main/resources/static/src/main.py --image /Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/c6bb5cbe-e6cb-403d-8a29-0fa04005d407/1649491285245_이력서사진.jpeg --imgDirPath c6bb5cbe-e6cb-403d-8a29-0fa04005d407005d407");
+		    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		    String line = null;
+
+		    while((line = br.readLine()) != null){
+		        System.out.println(line);
+		    }
+		    p.waitFor();
+		    p.destroy();
+		    return "seccess";
+
+		}catch(Exception e){
+		    //System.out.println(e);
+		    return "failed";
+		}
+	}
+	//15ef97ea-9d76-496a-89fa-d379b6761511/1649484307840_이력서사진.jpeg
+}

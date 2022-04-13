@@ -11,7 +11,7 @@ def analysis(imgpath, imgDirPath):
     #######################################
     #           Face detection            #
     #######################################
-    print(imgDirPath)
+    # print(imgDirPath)
     df = DetectFace(imgpath)
     face = [df.left_cheek, df.right_cheek,
             df.left_eyebrow, df.right_eyebrow,
@@ -40,8 +40,8 @@ def analysis(imgpath, imgDirPath):
         Lab_b.append(float(format(lab.lab_b,".2f")))
         hsv_s.append(float(format(hsv.hsv_s,".2f"))*100)
 
-    print('Lab_b[skin, eyebrow, eye]',Lab_b)
-    print('hsv_s[skin, eyebrow, eye]',hsv_s)
+    # print('Lab_b[skin, eyebrow, eye]',Lab_b)
+    # print('hsv_s[skin, eyebrow, eye]',hsv_s)
     #######################################
     #      Personal color Analysis        #
     #######################################
@@ -49,13 +49,18 @@ def analysis(imgpath, imgDirPath):
     hsv_weight = [10, 1, 1]
     if(tone_analysis.is_warm(Lab_b, Lab_weight)):
         if(tone_analysis.is_spr(hsv_s, hsv_weight)):
-            tone = '봄웜톤(spring)'
+            tone = 'spring'
+            #tone = '봄웜톤(spring)'
         else:
-            tone = '가을웜톤(fall)'
+            tone = 'fall'
+            #tone = '가을웜톤(fall)'
     else:
         if(tone_analysis.is_smr(hsv_s, hsv_weight)):
-            tone = '여름쿨톤(summer)'
+            tone = 'summer'
+            #tone = '여름쿨톤(summer)'
         else:
-            tone = '겨울쿨톤(winter)'
+            tone = 'winter'
+            #tone = '겨울쿨톤(winter)'
     # Print Result
-    print('{}의 퍼스널 컬러는 {}입니다.'.format(imgpath, tone))
+    #print('{}의 퍼스널 컬러는 {}입니다.'.format(imgpath, tone))
+    print(tone)
