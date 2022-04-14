@@ -3,6 +3,7 @@ package com.personalColor.pc.Controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,18 +42,20 @@ public class UserController {
 	@RequestMapping(value = "result.do")//User user, 
 	public User result(@RequestBody Map<String, Object> num) {
 		String pkStr = num.get("userNum").toString();
+		System.out.println("테스트 "+pkStr);
 		long pk = Long.parseLong(pkStr);
 		User res = userService.result(pk);
 		
-		System.out.println(res.getAge());
-		System.out.println(res.getDirPath());
-		System.out.println(res.getGender());
-		System.out.println(res.getImgPath());
-		System.out.println(res.getName());
-		System.out.println(res.getRes());
-		System.out.println(res.getUserNum());
 		
+		return res;
+	}
+	
+	
+	@RequestMapping(value = "test.do/{idx}")//User user, 
+	public User test(@PathVariable("idx") long num) {
 		
+		System.out.println("test.do : " + num);
+		User res = userService.result(num);
 		return res;
 	}
 }

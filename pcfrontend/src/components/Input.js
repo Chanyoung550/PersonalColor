@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import '../css/Input.css'
 
     const Input = () => {
 
@@ -79,32 +80,30 @@ import axios from 'axios'
         }
 
     return (
-        <div>
-            <div>
-                <input type = "text" placeholder='이름' onChange={handleForm} name = 'name'/>
+        <div className='ContentPadding'>
+            <div className='DivPadding'>
+                <input className='TextSize' type = "text" placeholder='이름' onChange={handleForm} name = 'name'/>
             </div>
-            <div>
-                <input type = "number" placeholder='나이' onChange={handleForm} name = 'age'/>
+            <div className='DivPadding'>
+                <input className='TextSize' type = "number" placeholder='나이' onChange={handleForm} name = 'age'/>
             </div>
             <div onChange={(event)=>{radioChk(event)}}> 
                 <input id="male" value="남자" type="radio" name='gender'/>남자
                 <input id="female" value="여자" type="radio" name='gender'/>여자
             </div>
-            <div>
-                <div >
-                    <button onClick={imgUploadBtn} id = "pho">사진등록</button>
-                    <input type="file" style = {{display:"none"}} id = "imgFile" accept='image/*' onChange={(event)=>{imgChange(event)}}/>
-                    {imgFile && <img src = {imgFile} alt=''/>}
-                </div>
+            <div className='DivPadding'>
+                {imgFile && <img src = {imgFile} alt=''/>}
+                <button className='BtnSize' onClick={imgUploadBtn} id = "pho">사진등록</button>
+                <input type="file" style = {{display:"none"}} id = "imgFile" accept='image/*' onChange={(event)=>{imgChange(event)}}/>
             </div>
-            <div>
+            <div className='DivPadding'>
                 <Link to = {{
                     pathname: '/result',
                     state: {
                         data1: num
                     },
                 }} id = "resultBtn">
-                    <button onClick={(event) => {imgupload(event)}} >퍼스널컬러확인하기</button>
+                    <button className='BtnSize'  onClick={(event) => {imgupload(event)}} >퍼스널컬러확인하기</button>
                 </Link>
             </div>
         </div>

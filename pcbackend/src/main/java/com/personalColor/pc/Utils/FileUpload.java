@@ -13,14 +13,15 @@ public class FileUpload {
 		
 		long time = System.currentTimeMillis();
 		
-		try {
+		try {///Users/chan/PersonalColor/pcfrontend/public/images/1ea4bda6-e9eb-4fc4-9dec-ea39055d8368
 			String uid = UUID.randomUUID().toString();
-			File imgFile = new File("/Users/chan/PersonalColor/pcbackend/src/main/resources/static/images/"+uid+"/"+time+"_"+file.getOriginalFilename());
+			String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+			File imgFile = new File("/Users/chan/PersonalColor/pcfrontend/public/images/"+uid+"/"+time+"."+extension);
 			imgFile.mkdirs();
 			file.transferTo(imgFile);
 			String[] resArr = new String[3];
 			resArr[0] = uid;
-			resArr[1] = time+"_"+file.getOriginalFilename();
+			resArr[1] = time+"."+extension;
 			
 			
 			Command startPython = new Command();

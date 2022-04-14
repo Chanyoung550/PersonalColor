@@ -1,0 +1,49 @@
+.BodyRadius {
+    border: 1px solid lightgray;
+}
+
+.BodyFlex {
+    flex-direction: column;
+    display: flex;
+}
+
+.BodyFlexItems {
+    flex: 1;
+    padding: 30px;
+}
+
+.TitleFontSize {
+    font-size:20px;
+}
+
+.AttrFlex {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.AttrFlexItemsColor {
+    border:1px solid lightgray;
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+}
+
+.AttrFlexItemsFont {
+    margin-left: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+    .BodyFlex {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1200px) {
+}
+  

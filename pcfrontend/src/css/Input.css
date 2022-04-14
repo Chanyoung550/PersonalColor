@@ -1,0 +1,51 @@
+.ContentPadding {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid lightgray;
+}
+
+.DivPadding {
+    padding: 10px;
+}
+
+.TextSize {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 7px;
+    width: 100%;
+}
+
+.BtnSize {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid lightgray;
+    background: aliceblue;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .TextSize {
+        width: 70%;
+    }
+    .BtnSize {
+        width: 70%;
+    }
+}
+
+@media (min-width: 992px) {
+    .TextSize {
+        width: 55%;
+    }
+    .BtnSize {
+        width: 55%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .TextSize {
+        width: 40%;
+    }
+    .BtnSize {
+        width: 40%;
+    }
+}

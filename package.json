@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "chart.js": "^3.7.1",
+    "react-chartjs-2": "^4.1.0",
+    "styled-components": "^5.3.5",
+    "styled-reset-advanced": "^1.0.3"
+  }
+}
