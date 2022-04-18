@@ -35,6 +35,13 @@
     margin-bottom: auto;
 }
 
+.AttrFlexItemsTitleMargin {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
 @media (min-width: 768px) {
 }
 

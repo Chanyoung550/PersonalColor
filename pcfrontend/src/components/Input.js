@@ -92,9 +92,15 @@ import '../css/Input.css'
                 <input id="female" value="여자" type="radio" name='gender'/>여자
             </div>
             <div className='DivPadding'>
-                {imgFile && <img src = {imgFile} alt=''/>}
-                <button className='BtnSize' onClick={imgUploadBtn} id = "pho">사진등록</button>
-                <input type="file" style = {{display:"none"}} id = "imgFile" accept='image/*' onChange={(event)=>{imgChange(event)}}/>
+                {imgFile && 
+                    <div className='ImgMargin'>
+                        <img className='ImgSize' src = {imgFile} alt=''/>
+                    </div>
+                }
+                <div>
+                    <button className='BtnSize' onClick={imgUploadBtn} id = "pho">사진등록</button>
+                    <input type="file" style = {{display:"none"}} id = "imgFile" accept='image/*' onChange={(event)=>{imgChange(event)}}/>
+                </div>
             </div>
             <div className='DivPadding'>
                 <Link to = {{

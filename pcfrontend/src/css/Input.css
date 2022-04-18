@@ -23,11 +23,29 @@
     border-radius: 5px;
 }
 
+.ImgSize {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.ImgMargin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.BtnSize:hover {
+    background: #333333;
+    color: #fff;
+}
+
 @media (min-width: 768px) {
     .TextSize {
         width: 70%;
     }
     .BtnSize {
+        width: 70%;
+    }
+    .ImgSize {
         width: 70%;
     }
 }
@@ -39,6 +57,9 @@
     .BtnSize {
         width: 55%;
     }
+    .ImgSize {
+        width: 55%;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -46,6 +67,9 @@
         width: 40%;
     }
     .BtnSize {
+        width: 40%;
+    }
+    .ImgSize {
         width: 40%;
     }
 }
